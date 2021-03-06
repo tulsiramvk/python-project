@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>data retrievel</title>
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body>
+    <div class="col-md-12">
+	 <form method="post">
+      
+          <table class="table table-hover">
+            {%csrf_token%}
+            <tr>
+              <th>User ID</th>
+              <th>Name</th>
+              <th>Age</th>
+              <th>Gender</th>
+              <th>Mobile</th>
+              <th>Place</th>
+              <th>Update</th>
+              <th>Delete</th>
+            </tr>
+
+            {% for i in data %}
+            <tr>
+              <td>{{i.id}}</td>
+              <td>{{i.name}}</td>
+              <td>{{i.age}}</td>
+              <td>{{i.gender}}</td>
+              <td>{{i.mobile}}</td>
+              <td>{{i.place}}</td>
+              
+              <td><a href="{% url 'updateform' pk=i.id %}" class="btn btn-primary">Update</a></td>
+              <td><a href="{% url 'deleteform' pk=i.id %}" class="btn btn-danger">Delete</a></td>
+            </tr>
+            
+            {% endfor %}
+            <tr>
+
+         
+
+        </table>
+    </form>
+</div>
+</body>
+</html>
